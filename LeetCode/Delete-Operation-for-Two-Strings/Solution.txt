@@ -1,0 +1,17 @@
+1class Solution {
+2public:
+3int check(int n,int m,string & s,string& str1, vector<vector<int>>& dp){
+4        if(n<0 || m<0) return 0;
+5        if(dp[n][m]!=-1) return dp[n][m];
+6        if(s[n]==str1[m]) return dp[n][m]=1+check(n-1,m-1,s,str1,dp);
+7        else return dp[n][m]=max(check(n-1,m,s,str1,dp),check(n,m-1,s,str1,dp));
+8    }
+9    int minDistance(string word1, string word2) {
+10        int n=word1.length();
+11        int m=word2.length();
+12        vector<vector<int>> dp(n,vector<int>(m,-1));
+13       int j=check(n-1,m-1,word1,word2,dp);
+14        return (n+m)-2*j;
+15    }
+16    
+17};
