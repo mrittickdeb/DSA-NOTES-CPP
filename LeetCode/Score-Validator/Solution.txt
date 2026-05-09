@@ -1,0 +1,16 @@
+1class Solution {
+2public:
+3    vector<int> scoreValidator(vector<string>& events) {
+4        int n=events.size();
+5        int sum=0;
+6        int w=0;
+7        for(int i=0;i<n;i++){
+8            if(w==10) return {sum,w};
+9            if(events[i]=="W") w++;
+10            else if(events[i]=="WD" || events[i]=="NB") sum++;
+11                
+12            else sum+=stoi(events[i]);
+13        }
+14        return {sum,w};
+15    }
+16};
