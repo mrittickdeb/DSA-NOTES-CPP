@@ -1,30 +1,22 @@
-class Solution {
-    public int minSubArrayLen(int s, int[] nums) {
-        int n = nums.length;
-        if (n == 0) {
-            return 0;
-        }
-
-        int ans = Integer.MAX_VALUE;
-
-        int[] sums = new int[n + 1]; 
-        for (int i = 1; i <= n; i++) {
-            sums[i] = sums[i - 1] + nums[i - 1];
-        }
-
-        for (int i = 1; i <= n; i++) {
-            int target = s + sums[i - 1];
-            int bound = Arrays.binarySearch(sums, target);
-            
-            if (bound < 0) {
-                bound = -bound - 1;
-            }
-
-            if (bound <= n) {
-                ans = Math.min(ans, bound - (i - 1));
-            }
-        }
-
-        return ans == Integer.MAX_VALUE ? 0 : ans;
-    }
-}
+1class Solution {
+2public:
+3    int minSubArrayLen(int target, vector<int>& nums) {
+4        int n=nums.size();
+5        int i=0;
+6        int mini=INT_MAX;
+7        int sum=0;
+8        for(int j=0;j<n;j++){
+9            sum+=nums[j];
+10            while(sum>=target){
+11                    sum-=nums[i];
+12               mini=min(mini,j-i+1);
+13                    i++;
+14            }
+15            
+16             
+17           
+18        }
+19        if(mini==INT_MAX) return 0;
+20         return mini;
+21    }
+22};
