@@ -28,8 +28,6 @@ public:
 
 
     vector<vector<int>> floodFill(vector<vector<int>> &image,int sr, int sc, int newColor) {
-
-        int n=image.size();
         int inicolor=image[sr][sc];
         vector<vector<int>> ans=image;
         int delrow[]={-1,0,1,0};
